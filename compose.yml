@@ -17,7 +17,5 @@ services:
     depends_on:
       - pandoc-letter
     volumes:
-      - type: bind
-        source: ./coverletter-builder/sample/letter.md
-        target: /app/letter.md
+      - ./coverletter-builder/sample/letter.md:/app/letter.md
       - ./output:/output
