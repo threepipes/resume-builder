@@ -1,6 +1,6 @@
-[submodule "cv-builder/markdown-cv"]
-	path = cv-builder/markdown-cv
-	url = git@github.com:elipapa/markdown-cv.git
 [submodule "coverletter-builder/coverletter-builder"]
 	path = coverletter-builder/coverletter-builder
 	url = git@github.com:aaronwolen/pandoc-letter.git
+[submodule "cv-builder/pandoc_resume"]
+	path = cv-builder/pandoc_resume
+	url = git@github.com:mszep/pandoc_resume.git
