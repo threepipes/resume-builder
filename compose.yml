@@ -1,0 +1,23 @@
+services:
+  cv-builder:
+    image: threepipes/cv-builder
+    build:
+      context: cv-builder
+    volumes:
+      - ./cv-builder/sample/CV.md:/home/app/resume/markdown/resume.md
+      - ./output:/home/app/resume/output
+  pandoc-letter:
+    image: pandoc-letter
+    build:
+      context: coverletter-builder/coverletter-builder
+  coverletter-builder:
+    image: threepipes/coverletter-builder
+    build:
+      context: coverletter-builder
+    depends_on:
+      - pandoc-letter
+    volumes:
+      - type: bind
+        source: ./coverletter-builder/sample/letter.md
+        target: /app/letter.md
+      - ./output:/output

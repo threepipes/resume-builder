@@ -1,0 +1,8 @@
+/pandoc_resume/.gitignore
+/pandoc_resume/LICENSE
+/pandoc_resume/README.md
+/pandoc_resume/.docker
+/pandoc_resume/.github
+/pandoc_resume/README.md
+/pandoc_resume/docker-compose.yml
+/pandoc_resume/ISSUE_TEMPLATE
