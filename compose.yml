@@ -1,6 +1,6 @@
 services:
   cv-builder:
-    image: threepipes/cv-builder
+    image: ghcr.io/threepipes/cv-builder
     build:
       context: cv-builder
     volumes:
@@ -11,7 +11,7 @@ services:
     build:
       context: coverletter-builder/coverletter-builder
   coverletter-builder:
-    image: threepipes/coverletter-builder
+    image: ghcr.io/threepipes/coverletter-builder
     build:
       context: coverletter-builder
     depends_on:
