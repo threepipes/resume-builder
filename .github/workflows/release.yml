@@ -1,0 +1,38 @@
+name: Create and publish a Docker image
+
+on:
+  push:
+    branches: ['release']
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and test images
+        run: |
+          docker-compose build
+          docker-compose up
+          ls -l output
+          if [[ ! -f "output/letter.pdf" || ! -f "output/resume.pdf" ]]; then
+            echo "output not found"
+            exit 1
+          fi
+          docker-compose down
+      - name: Push images
+        run: |
+          docker-compose push
